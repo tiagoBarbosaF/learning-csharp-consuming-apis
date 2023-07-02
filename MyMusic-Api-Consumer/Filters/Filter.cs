@@ -13,11 +13,11 @@ internal class Filter
 
     public static void FilterOrderArtistsByName(IEnumerable<Songs> songs)
     {
-        var allArtists = songs.OrderBy(song => song.Artist).Select(song => song.Artist).Distinct().ToList();
+        var allArtists = songs.OrderBy(song => song.Artist).Select(song => new{song.Artist, song.Name}).Distinct().ToList();
 
         Console.WriteLine($"\nArtists ordered by name:");
 
-        foreach (var artist in allArtists) Console.WriteLine($"- {artist}");
+        foreach (var artist in allArtists) Console.WriteLine($"- {artist.Artist} | song: {artist.Name}");
 
         Console.WriteLine($"Total artists: {allArtists.Count}");
     }

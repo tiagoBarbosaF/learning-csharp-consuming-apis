@@ -9,9 +9,18 @@ var songs = await ClientHttp.GetClient("https://guilhermeonrails.github.io/api-c
 // Filter.FilterSongGenre(songs);
 // Filter.FilterOrderArtistsByName(songs);
 // Filter.FilterArtistsBySongGenre(songs, "rock");
-Filter.FilterSongsByArtist(songs, "U2");
+// Filter.FilterSongsByArtist(songs, "U2");
 // Filter.FilterSongsByYear(songs, "2014");
 // foreach (var song in songs) song.ShowDetails();
+var favoriteSongs = new FavoriteSongs("Tiago");
+favoriteSongs.AddFavoriteSongs(songs[10]);
+favoriteSongs.AddFavoriteSongs(songs[20]);
+favoriteSongs.AddFavoriteSongs(songs[100]);
+favoriteSongs.AddFavoriteSongs(songs[210]);
+favoriteSongs.AddFavoriteSongs(songs[1010]);
+
+favoriteSongs.ShowFavoriteSongs();
+favoriteSongs.GenerateJsonFile();
 
 #endregion
 
