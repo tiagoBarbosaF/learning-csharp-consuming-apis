@@ -4,8 +4,8 @@ namespace MyMusic_Api_Consumer.Models;
 
 internal class FavoriteSongs
 {
-    public string Name { get; set; }
-    public List<Songs> ListSongs { get; set; }
+    private string Name { get; set; }
+    private List<Songs> ListSongs { get; set; }
 
     public FavoriteSongs(string name)
     {

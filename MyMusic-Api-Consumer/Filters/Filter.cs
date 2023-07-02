@@ -2,7 +2,7 @@
 
 namespace MyMusic_Api_Consumer.Filters;
 
-internal class Filter
+internal abstract class Filter
 {
     public static void FilterSongGenre(IEnumerable<Songs> songs)
     {
@@ -58,5 +58,23 @@ internal class Filter
         Console.WriteLine($"Songs ordered by the year {year}:");
 
         foreach (var song in songsByYear) Console.WriteLine($"- {song.Name}");
+    }
+
+    public static void FilterByTone(IEnumerable<Songs> songs, string tone)
+    {
+        var songsByTone = songs.OrderBy(song => song.Name)
+            .Where(song => song.Tones.Equals(tone)).Select(song => new { song.Artist, song.Duration, song.Name, song.Tones, song.Genre })
+            .Distinct()
+            .ToList();
+
+        Console.WriteLine($"Songs by the tone ({tone})");
+
+        foreach (var song in songsByTone)
+            Console.WriteLine($"Artist: {song.Artist}\n" +
+                              $"Music: {song.Name}\n" +
+                              $"Duration: {song.Duration / 1000} sec\n" +
+                              $"Genre: {song.Genre}\n" +
+                              $"Tones: {song.Tones}\n" +
+                              $"---------------------------------------------");
     }
 }

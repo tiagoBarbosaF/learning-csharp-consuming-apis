@@ -2,7 +2,7 @@
 
 namespace MyMusic_Api_Consumer;
 
-public class ClientHttp
+internal abstract class ClientHttp
 {
     public static async Task<List<T>> GetClient<T>(string uri, T anyClass)
     {

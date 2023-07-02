@@ -6,21 +6,40 @@ using MyMusic_Api_Consumer.Models;
 
 var songs = await ClientHttp.GetClient("https://guilhermeonrails.github.io/api-csharp-songs/songs.json", new Songs());
 
+// foreach (var song in songs)
+// {
+//     song.ShowMusicsByTone("Eb");
+// }
+
+
+#region Filters
+
 // Filter.FilterSongGenre(songs);
 // Filter.FilterOrderArtistsByName(songs);
 // Filter.FilterArtistsBySongGenre(songs, "rock");
 // Filter.FilterSongsByArtist(songs, "U2");
 // Filter.FilterSongsByYear(songs, "2014");
-// foreach (var song in songs) song.ShowDetails();
-var favoriteSongs = new FavoriteSongs("Tiago");
-favoriteSongs.AddFavoriteSongs(songs[10]);
-favoriteSongs.AddFavoriteSongs(songs[20]);
-favoriteSongs.AddFavoriteSongs(songs[100]);
-favoriteSongs.AddFavoriteSongs(songs[210]);
-favoriteSongs.AddFavoriteSongs(songs[1010]);
+Filter.FilterByTone(songs, "C#");
 
-favoriteSongs.ShowFavoriteSongs();
-favoriteSongs.GenerateJsonFile();
+#endregion
+
+
+#region Creating Json File
+
+// foreach (var song in songs) song.ShowDetails();
+// var favoriteSongs = new FavoriteSongs("Tiago");
+// favoriteSongs.AddFavoriteSongs(songs[10]);
+// favoriteSongs.AddFavoriteSongs(songs[20]);
+// favoriteSongs.AddFavoriteSongs(songs[100]);
+// favoriteSongs.AddFavoriteSongs(songs[210]);
+// favoriteSongs.AddFavoriteSongs(songs[1010]);
+//
+// favoriteSongs.ShowFavoriteSongs();
+// favoriteSongs.GenerateJsonFile();
+
+#endregion
+
+
 
 #endregion
 
