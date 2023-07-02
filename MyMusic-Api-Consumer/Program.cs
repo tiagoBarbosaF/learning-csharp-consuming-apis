@@ -1,11 +1,17 @@
 ﻿using MyMusic_Api_Consumer;
+using MyMusic_Api_Consumer.Filters;
 using MyMusic_Api_Consumer.Models;
 
 #region Songs - API
 
 var songs = await ClientHttp.GetClient("https://guilhermeonrails.github.io/api-csharp-songs/songs.json", new Songs());
 
-foreach (var song in songs) song.ShowDetails();
+// Filter.FilterSongGenre(songs);
+// Filter.FilterOrderArtistsByName(songs);
+// Filter.FilterArtistsBySongGenre(songs, "rock");
+Filter.FilterSongsByArtist(songs, "U2");
+// Filter.FilterSongsByYear(songs, "2014");
+// foreach (var song in songs) song.ShowDetails();
 
 #endregion
 
